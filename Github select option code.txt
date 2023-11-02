@@ -1,0 +1,30 @@
+selected list another model code 
+
+WebElement userList = driver.findElement(By.id("userListId"));
+
+        // Define the name you want to check
+        String nameToCheck = "John Doe";
+
+        // Check if the name is visible in the user list
+        boolean isNameVisible = isNameVisibleInUserList(userList, nameToCheck);
+
+        if (isNameVisible) {
+            System.out.println("The name '" + nameToCheck + "' is visible in the user list.");
+        } else {
+            System.out.println("The name '" + nameToCheck + "' is not visible in the user list.");
+        }
+
+        // Close the WebDriver
+        driver.quit();
+    }
+
+    // Function to check if a name is visible in a user list
+    public static boolean isNameVisibleInUserList(WebElement userList, String name) {
+        try {
+            userList.findElement(By.xpath(".//li[contains(text(), '" + name + "')]"));
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+}
